@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+ifstream fin("eratostene.in");
+ofstream fout("eratostene.out");
+
+char v[1000001];
+long long x[1000001];
+
+void eratostene()
+{
+    int d,i;
+    v[0]=v[1]=1;
+    for(i=2;i*i<=1000001;i++)
+    {
+        if(v[i]==0)
+        {
+            for(d=2*i;d<=1000001;d+=i)
+            {
+                v[d]=1;
+            }
+        }
+    }
+}
+int main()
+{
+    int n,nr=0,i;
+    fin>>n;
+    eratostene();
+    for(i=1;i<=n;i++)
+    {
+        fin>>x[i];
+        if(v[x[i]]==0)
+        {
+            nr++;
+        }
+    }
+    fout<<nr;
+    return 0;
+}
